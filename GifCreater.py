@@ -14,8 +14,8 @@ CUSTOM_PARAMS = {
     "gif_duration": 0.2,
     "gif_fps": 15,
     "gif_loop": 0,
-    "transparent_background": True,  # 保存截图时启用透明背景
-    "remove_white_background": True,  # 额外消除白色背景像素
+    "transparent_background": False,  # 保存截图时启用透明背景 建议不要与52行强制显示坐标轴同时开启
+    "remove_white_background": False,  # 额外消除白色背景像素 建议不要与52行强制显示坐标轴同时开启
     "white_threshold": 5,  # 白色判断阈值，数值越大越宽松
 }
 # =========================================
@@ -48,7 +48,7 @@ view = GetActiveViewOrCreate('RenderView')
 view.ViewSize = CUSTOM_PARAMS["view_size"]
 view.UseFXAA = True
 
-# 核心修复1：使用 Orientation Axes 替代 GetAxesGrid
+# 使用 Orientation Axes 替代 GetAxesGrid
 view.OrientationAxesVisibility = 1  # 强制显示坐标轴
 view.OrientationAxesLabelColor = [0, 0, 0]  # 黑色标签
 view.OrientationAxesOutlineColor = [0, 0, 0]  # 灰色边框
@@ -141,3 +141,4 @@ for idx, (source_name, source) in enumerate(sources.items()):
     print(f'生成完成: {case_name}.gif')
 
 print('所有任务处理完毕')
+
